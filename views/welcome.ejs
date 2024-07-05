@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Welcome <%= data.name %> </title>
+</head>
+<body class="bg-black bg-gradient">
+    <div class="con ">
+        <h1> Hi! <span><%= data.name %></span></h1>
+        <div class="area">
+            <form action="/welcome" method="post">
+                <textarea name="message" id="" placeholder="اكتب موقفين لينا مع بعض واحد كويس والتانى وحش " required autofocus></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
