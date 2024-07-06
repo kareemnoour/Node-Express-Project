@@ -1,5 +1,4 @@
 const Mongo = require("mongoose");
-const moment = require("moment")
 const Schema = Mongo.Schema;
 
 const UserSchema = new Schema({
