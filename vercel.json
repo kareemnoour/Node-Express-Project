@@ -9,7 +9,14 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/"
+        "dest": "/index.js"
       }
-    ]
+    ],
+    "env": {
+      "PORT": 3000,
+      "DATA_BASE_URL": "mongodb://localhost:27017/mydatabase"
+    },
+    "public": {
+      "ignore": ["**/*.ejs"]
+    }
   }

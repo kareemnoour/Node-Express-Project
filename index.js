@@ -94,7 +94,10 @@ app.post("/welcome", (req, res) => {
 });
 
 mongo
-    .connect(DB)
+    .connect(DB,{
+        serverSelectionTimeoutMS: 5000, 
+        socketTimeoutMS: 45000, 
+    })
     .then(() => {
         console.log("Connected to MongoDB");
         app.listen(port, () => {
