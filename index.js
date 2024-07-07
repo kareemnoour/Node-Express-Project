@@ -11,6 +11,7 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
 const DB = process.env.DATA_BASE_URL;
