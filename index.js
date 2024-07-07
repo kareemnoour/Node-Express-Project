@@ -4,8 +4,7 @@ const mongo = require("mongoose");
 const User = require("./models/user");
 const Message = require("./models/message");
 const moment = require("moment");
-const dotenv = require('dotenv');
-
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -17,8 +16,10 @@ const port = process.env.PORT || 3000;
 const DB = process.env.DATA_BASE_URL;
 
 if (!DB) {
-    console.error("DATA_BASE_URL is undefined. Make sure the .env file is properly configured and dotenv is loaded.");
-    process.exit(1); 
+    console.error(
+        "DATA_BASE_URL is undefined. Make sure the .env file is properly configured and dotenv is loaded."
+    );
+    process.exit(1);
 }
 
 let userName = "";
@@ -28,18 +29,19 @@ app.get("/admin", (req, res) => {
     let messages = Message.find({}).exec();
 
     Promise.all([users, messages])
-    .then((data) => {
-        const users = data[0];
-        const messages = data[1];
+        .then((data) => {
+            const users = data[0];
+            const messages = data[1];
 
-        res.render("dashboard.ejs", {
-            users: users,
-            messages: messages,
-            moment: moment,
+            res.render("dashboard.ejs", {
+                users: users,
+                messages: messages,
+                moment: moment,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
-    }).catch((error) => {
-        console.log(error);
-    });
 });
 
 app.get("/welcome", (req, res) => {
@@ -101,3 +103,5 @@ mongo
     .catch((err) => {
         console.log(err);
     });
+
+module.exports = app;
