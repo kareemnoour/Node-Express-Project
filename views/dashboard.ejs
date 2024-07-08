@@ -15,7 +15,9 @@
 
            <% if (messages[index] && messages[index].message) { %>
             <p>Message is : <span><%= messages[index].message %></span></p>
-           <% } %>
+           <% } else {%>
+            <p>There are no messages</p>
+            <% } %>
             
            <% if (user && user.name) { %>
             <span>User Created At:  <span><%= moment(user.createdAt).fromNow() %></span></span>
