@@ -19,6 +19,16 @@ app.set('views', path.join(__dirname, 'views'));
 
 dotenv.config();
 
+
+app.use(express.static(path.join(__dirname, 'public'), {
+    setHeaders: (res, path, stat) => {
+        if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        }
+    }
+}));
+
+
 const port = process.env.PORT || 3000;
 const DB = process.env.DATA_BASE_URL;
 
