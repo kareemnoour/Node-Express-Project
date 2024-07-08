@@ -9,12 +9,23 @@
 <body>
     <% users.forEach((user, index) => { %>
         <ul>
-            <li><%= user.name %></li>
+            <% if (user && user.name) { %>
+                <li><%= user.name %></li>     
+            <% } %>
+
+           <% if (messages[index] && messages[index].message) { %>
             <p>Message is : <span><%= messages[index].message %></span></p>
+           <% } %>
+            
+           <% if (user && user.name) { %>
             <span>User Created At:  <span><%= moment(user.createdAt).fromNow() %></span></span>
-            <span>User Formatted Date:  <span><%= moment(user.createdAt).calendar() %></span></span>
-            <span>Message Created At:  <span><%= moment(messages[index].createdAt).fromNow() %></span></span>
-            <span>Message Formatted Date:  <span><%= moment(messages[index].createdAt).calendar() %></span></span>
+            <span>User Formatted Date:  <span><%= moment(user.createdAt).calendar() %></span></span>  
+           <% } %>
+
+            <% if (messages[index] && messages[index].message) { %>
+                <span>Message Created At:  <span><%= moment(messages[index].createdAt).fromNow() %></span></span>
+                <span>Message Formatted Date:  <span><%= moment(messages[index].createdAt).calendar() %></span></span>
+            <% } %>
         </ul>
     <% }) %>
     
